@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import List from "./components/List";
 
+export interface MyState {
+  form: {
+    name: string;
+    time: number;
+    comment?: string; // review?:string denotes the value of review could either be a string or undefined
+  }[]; //[] denotes MyState state variables could be An array
+}
 function App() {
+  const [form, setForm] = useState<MyState["form"]>([
+    {
+      name: "Break-fast",
+      time: 9,
+      comment: "Healthy Food",
+    },
+    {
+      name: "Learn Typescript",
+      time: 10,
+      comment: "10 pm - 12 pm",
+    },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+      <List form={form} />
+      <Form form={form} setForm ={setForm} />
+      </main>
     </div>
   );
 }
