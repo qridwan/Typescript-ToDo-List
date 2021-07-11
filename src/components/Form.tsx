@@ -57,7 +57,7 @@ const Form: React.FC<MyState> = ({ form, setForm }) => {
             />
           </div>
           <div>
-            <h3>add a time</h3>
+            <h3>Add a time</h3>
             <input
               className="inputBox rating"
               type="number"
